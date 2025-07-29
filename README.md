@@ -32,3 +32,13 @@ A command-line task manager that allows users to:
 
 ### Built With
 - C++
+
+
+ ## BODY MASS INDEX CALCULATOR ( B.M.I )
+ A C++ program that calculates a user's Body Mass Index  (BMI) and shows potential health risks based on the result.
+
+ ### Features 
+ - Takes weight and height as input
+ - Calculates BMI of the user inputs
+ - Gives health category (underweight, normal, overweight, obese )
+ - Stores abd displays BMI history 
