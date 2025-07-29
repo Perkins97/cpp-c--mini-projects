@@ -41,4 +41,4 @@ A command-line task manager that allows users to:
  - Takes weight and height as input
  - Calculates BMI of the user inputs
  - Gives health category (underweight, normal, overweight, obese )
- - Stores abd displays BMI history 
+ - Stores and displays BMI history 
