@@ -1,0 +1,3 @@
+/Users/black/CLionProjects/Library-management/cmake-build-debug/CMakeFiles/Library_management.dir
+/Users/black/CLionProjects/Library-management/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/black/CLionProjects/Library-management/cmake-build-debug/CMakeFiles/rebuild_cache.dir
