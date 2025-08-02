@@ -42,3 +42,29 @@ A command-line task manager that allows users to:
  - Calculates BMI of the user inputs
  - Gives health category (underweight, normal, overweight, obese )
  - Stores and displays BMI history 
+
+
+#  Library Management System
+
+A simple **C++ console-based library management system** that allows users to add, view, search, borrow, return, and delete books. All book data is stored in memory using C++ vectors.
+
+---
+
+##  Features
+
+-  Add new books with ID, title, author, year, and quantity
+-  View all books in the library
+-  Search for a book by ID
+-  Borrow a book (with quantity check)
+-  Return a book (increments quantity)
+-  Delete a book by ID with confirmation
+-  Menu-driven interface using a loop
+
+---
+
+##  Tech Stack
+
+- **Language:** C++
+- **Environment:** Console (Command Line)
+
+
