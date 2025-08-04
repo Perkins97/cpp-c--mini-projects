@@ -7,7 +7,7 @@ struct  Book  {
 public:
     string bookId, bookTitle, bookAuthor, bookYear;
     int bookQuantity;
-    vector <int> booksQuantity;
+    vector <int> booksQuantity,booksOriginalQuantity;
     vector <string> booksId, booksTitle, booksAuthor, booksYear;
 
     void addBooks() {
@@ -31,6 +31,7 @@ public:
         cout << "Enter quantity :" ;
         cin >> bookQuantity;
         booksQuantity.push_back(bookQuantity);
+        booksOriginalQuantity.push_back(bookQuantity);
     }
     void viewBooks() const {
         if (booksId.empty()) {
@@ -70,17 +71,21 @@ public:
     }
 
     void borrowBook()  {
-           string borrowTitle;
+
         char borrowChoice;
         cin.ignore();
-        cout << "Enter book title to borrow :" ;
-        getline(cin, borrowTitle);
+
         if (booksId.empty()) {
             cout << "No books available to borrow." << endl;
+            return;
         }
+
+        cout << "Enter book ID to borrow :" ;
+        getline(cin, bookId);
+
         for  (int i = 0; i < booksId.size(); ++i) {
 
-            if (booksTitle[i] == borrowTitle) {
+            if (booksId[i] == bookId) {
                 if (booksQuantity[i] > 0) {
                     cout << "Do you want to borrow this book ? (Y/N)" << endl;
                     cin >> borrowChoice;
@@ -92,28 +97,39 @@ public:
                     else {
                         cout << "Borrow cancelled." << endl;
                     }
-                    return;
+
                 }
             }
             else if (booksQuantity[i] <= 0) {
                 cout << "Book out of stock or unavailable." << endl;
             }
+            else if (booksId[i] != bookId) {
+                cout << "No book found with that ID" << endl;
+            }
+
 
         }
 
     }
 
     void returnBook() {
-        string returnTitle;
         char returnChoice;
 
         cin.ignore();
-        cout << "Enter book title :" ;
-        getline(cin, returnTitle);
+        cout << "Enter book ID to return :" ;
+        getline(cin, bookId);
+
+        if (booksQuantity.empty()) {
+            cout << "No book borrowed that needs to be returned" << endl;
+        }
 
         for  (int i = 0; i < booksId.size(); ++i) {
 
-                if (booksTitle[i]== returnTitle) {
+                if (booksId[i]== bookId) {
+                if (booksQuantity[i] == booksOriginalQuantity[i]) {
+                    cout << "This book hasn't been borrowed yet. Can't return" << endl;
+                    return;
+                }
                     cout << "Do you want to return this book ? (Y/N)" << endl;
                     cin >> returnChoice;
 
@@ -124,14 +140,14 @@ public:
                     else {
                         cout << "Return cancelled." << endl;
                     }
-                    return;
+
+                }else if (booksId[i] != bookId) {
+                    cout << "No book borrowed that needs to be returned" << endl;
                 }
-
-
         }
     }
 
-    void deleteBook() {
+    void deleteBook(){
         char confirm;
         string deleteId;
         if (booksId.empty()) {
@@ -149,6 +165,12 @@ public:
 
 
             if (deleteId == booksId[i]) {
+                cout <<"Book Found " << endl;
+                cout << " Book ID: " << booksId[i]
+                << " | Title: " << booksTitle[i]
+                << " | Author: " << booksAuthor[i]
+                << " | Year: " << booksYear[i]
+                << " | Quantity: " << booksQuantity[i] << endl;
                 cout << "Do you want to delete this book from library? (Y/N)." << endl;
                 cin >> confirm;
                 if (confirm == 'Y' || confirm == 'y') {
